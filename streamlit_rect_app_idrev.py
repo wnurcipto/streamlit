@@ -10,6 +10,54 @@ from langchain_core.messages import HumanMessage, AIMessage
 from typing import List, Any
 
 # ==============================================================================
+# 1.5. INISIALISASI KONSTANTA & INJEKSI CSS/HTML UNTUK WHATSAPP
+# ==============================================================================
+
+# GANTI DENGAN NOMOR WHATSAPP ANDA YANG BENAR (cth: 628123456789)
+WHATSAPP_NUMBER = "6289637031266" 
+WHATSAPP_LINK = f"https://wa.me/{WHATSAPP_NUMBER}"
+
+# Injeksi CSS dan HTML untuk Floating WhatsApp Button
+st.markdown(
+    f"""
+    <style>
+    /* CSS untuk Tombol WhatsApp Melayang */
+    .whatsapp-float {{
+        position: fixed;
+        width: 60px;
+        height: 60px;
+        bottom: 30px;
+        right: 30px;
+        background-color: #25d366;
+        color: #FFF;
+        border-radius: 50px;
+        text-align: center;
+        /* Ikon Sederhana (SVG WhatsApp Icon) */
+        line-height: 65px; 
+        font-size: 30px;
+        box-shadow: 2px 2px 3px #999;
+        z-index: 1000; /* Pastikan berada di atas konten lain */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none; /* Hilangkan garis bawah pada tautan */
+    }}
+
+    .whatsapp-float:hover {{
+        background-color: #128c7e;
+    }}
+    </style>
+
+    <a href="{WHATSAPP_LINK}" class="whatsapp-float" target="_blank" title="Hubungi kami via WhatsApp">
+        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-whatsapp" viewBox="0 0 16 16">
+          <path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.927c0 1.399.366 2.76 1.057 3.965L.053 15.94a.5.5 0 0 0 .604.604l4.137-1.378a7.926 7.926 0 0 0 3.965 1.057c4.366 0 7.92-3.558 7.923-7.926.002-2.182-1.04-4.253-2.943-5.352Zm-2.72 8.412c-.59.358-1.077.34-1.385.205-.386-.176-.84-.368-1.381-.54-.486-.153-1.037-.308-1.57-.457-.655-.183-1.282-.373-1.854-.539-.374-.11-.53-.153-.78-.153-.306 0-.52.12-.66.36-.14.24-.2.53-.2.83 0 .34.1.66.33.95.23.3.56.63.95.89.39.26.83.47 1.3.66.47.19.97.35 1.5.48.53.13 1.06.22 1.57.27.53.05 1.04.05 1.5-.02.66-.08 1.25-.33 1.63-.67.38-.34.62-.75.62-1.2.0-.45-.24-.86-.62-1.2-.38-.34-.97-.59-1.63-.67Z"/>
+        </svg>
+    </a>
+    """,
+    unsafe_allow_html=True
+)
+
+# ==============================================================================
 # 2. KONFIGURASI DAN TAMPILAN AWAL (CENTERED LAYOUT)
 # ==============================================================================
 
@@ -23,7 +71,6 @@ st.set_page_config(
 # --- FUNGSI CALLBACK UNTUK MENGISI INPUT CHAT DENGAN SARAN ---
 def set_input_value(prompt_text):
     """Menyetel nilai kotak input chat saat tombol diklik."""
-    # Mengisi session state dengan key dari st.chat_input ("chat_input_key")
     st.session_state["chat_input_key"] = prompt_text
 
 
@@ -52,10 +99,6 @@ with col_center_content:
     # 2.2. Pesan Sambutan Besar (Mirip tampilan referensi)
     st.markdown("---") 
     st.markdown("## Bagaimana saya bisa membantu Anda hari ini?")
-
-    # CATATAN: Informasi Tema DIHAPUS dari sini
-    # st.info("💡 Untuk mengganti tema aplikasi (Dark/Light Mode)...", icon="ℹ️")
-    # st.markdown("---") 
 
     # 2.3. Suggested Prompts (Tombol Saran Pertanyaan)
     
@@ -107,7 +150,7 @@ with col_center_content:
 
 
 # ==============================================================================
-# 3. BILAH SAMPING (SIDEBAR) UNTUK PENGATURAN (MODIFIKASI DI SINI)
+# 3. BILAH SAMPING (SIDEBAR) UNTUK PENGATURAN
 # ==============================================================================
 
 with st.sidebar:
@@ -137,7 +180,7 @@ with st.sidebar:
     reset_button = st.button("🔄 Mulai Ulang Percakapan", help="Hapus semua pesan dan mulai dari awal")
     st.markdown("---")
     
-    # --- INFORMASI TEMA (DIPINDAHKAN KE SINI) ---
+    # --- INFORMASI TEMA ---
     st.subheader("Tampilan Aplikasi")
     st.info("💡 Untuk mengganti tema (Dark/Light Mode), klik ikon tiga titik (**⋮**) di pojok kanan atas aplikasi Anda, lalu pilih **Settings**.", icon="🎨")
 
@@ -148,7 +191,7 @@ with st.sidebar:
 
 # 4.1. Cek Kunci API Awal
 if not google_api_key:
-    st.info("Mohon tambahkan kunci API Google AI Anda di sidebar untuk memulai.", icon="🗝️")
+    st.info("Mohon tambahkan kunci API Google AI Anda di sidebar untuk memulai. Anda juga dapat mendapatkan bantuan melalaui Whatsapp dengan klik tombol di pojok kanan bawah", icon="🗝️")
     st.stop()
 
 # 4.2. Inisialisasi Agen 
