@@ -191,7 +191,14 @@ with st.sidebar:
 
 # 4.1. Cek Kunci API Awal
 if not google_api_key:
-    st.info("Mohon tambahkan kunci API Google AI Anda di sidebar untuk memulai. Anda juga dapat mendapatkan bantuan melalaui Whatsapp dengan klik tombol di pojok kanan bawah", icon="🗝️")
+    st.info(
+        "Mohon tambahkan kunci API Google AI Anda di sidebar untuk memulai.",
+        icon="🗝️"
+    )
+    st.info(
+        "Anda juga dapat mendapatkan bantuan melalaui Whatsapp dengan klik tombol di pojok kanan bawah",
+        icon="💡"
+    )
     st.stop()
 
 # 4.2. Inisialisasi Agen 
