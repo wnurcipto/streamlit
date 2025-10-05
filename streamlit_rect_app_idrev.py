@@ -93,8 +93,8 @@ with col_center_content:
 
     with col_title:
         # Menampilkan judul dan deskripsi
-        st.title("💬 Chatbot Edukasi TPM System") 
-        st.caption("Sebuah chatbot edukasi TPM yang ramah dan berpengetahuan.")
+        st.title("💬 Chatbot Edukasi tentang TPM System") 
+        st.caption("Sebuah chatbot edukasi TPM yang ramah, berpengetahuan, dan siap berdiskusi bersama Anda.")
     
     # 2.2. Pesan Sambutan Besar (Mirip tampilan referensi)
     st.markdown("---") 
@@ -347,3 +347,4 @@ if prompt:
         error_message = f"Terjadi kesalahan saat pemrosesan: **{e}**. Pastikan Kunci API Anda masih valid dan coba Muat Ulang Percakapan."
         with st.chat_message("assistant", avatar="⚠️"):
             st.markdown(error_message)
+
