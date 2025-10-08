@@ -109,7 +109,7 @@ with col_center_content:
 
     with col_title:
         st.title("💬 Chatbot Edukasi TPM System") 
-        st.caption("Sebuah chatbot edukasi TPM yang ramah, berpengetahuan, dan siap berdiskusi bersama Anda.")
+        st.caption("Sebuah chatbot edukasi TPM yang ramah, berpengetahuan, dan siap berdiskusi bersama Anda. Saya fokuskan pada industri Footwear")
     
     st.markdown("---") 
     st.markdown("## Bagaimana saya bisa membantu Anda hari ini?")
@@ -319,3 +319,4 @@ if prompt:
             
         with st.chat_message("assistant", avatar="⚠️"):
             st.markdown(error_message)
+
