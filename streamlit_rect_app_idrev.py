@@ -81,7 +81,7 @@ st.markdown(
 # ==============================================================================
 
 st.set_page_config(
-    page_title="Chatbot Ahli TPM", 
+    page_title="Chatbot TPM Footwear", 
     page_icon="🤖", 
     layout="wide", 
     initial_sidebar_state="collapsed" 
@@ -197,8 +197,9 @@ if ("agent" not in st.session_state) or (getattr(st.session_state, "_last_key", 
     try:
         # --- A. SISTEM PROMPT ---
         mesin_spesifik = [
-            "mesin jahit", "lini lasting", "mesin chiller", "mesin cutting kulit", 
-            "mesin hot press", "mesin mixing", "mesin laminating"
+            "mesin jahit", "area lasting", "mesin chiller", "mesin cutting kulit", 
+            "mesin hot press", "mesin roll mixing", "mesin laminating", "area cementing", "area finishing",
+            "mesin conveyor", "mesin genset", "mesin kompressor"
         ]
         mesin_list_str = ", ".join(mesin_spesifik)
         
@@ -319,4 +320,5 @@ if prompt:
             
         with st.chat_message("assistant", avatar="⚠️"):
             st.markdown(error_message)
+
 
